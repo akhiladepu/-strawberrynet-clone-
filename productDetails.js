@@ -44,6 +44,14 @@ function showProduct(el) {
     image_f.src = el.image;
 
     imageContainer.append(image_f)
+    //piyush also add something here....................
+    special = document.createElement('div')
+    special.innerHTML = 'Daily Special';
+    special.setAttribute('class', 'special')
+    
+    //....................................................
+    
+
 
     let small_image1 = document.createElement('div');
     small_image1.setAttribute('class', 'smallImage');
@@ -68,7 +76,7 @@ function showProduct(el) {
 
     smallImageContainer.append(small_image1,small_image2,small_image3)
 
-    leftContainer.append(imageContainer, smallImageContainer);
+    leftContainer.append(imageContainer,special, smallImageContainer);
     
     let brand = document.createElement('a');
     brand.setAttribute('id', 'brand');
@@ -104,22 +112,54 @@ function showProduct(el) {
     }
     price.innerHTML = `<sup>Rs.</sup>${pnum}<sup>${decimal}</sup>`
 
+    //piyush added new..................................................................................
+     let price_cut = document.createElement('p');
+    price_cut.setAttribute('id', 'price_cut');
+    let pnum1= el.price.slice(0,el.price.length - 3);
+    price1 = (Math.round(pnum1) + (Math.round(pnum1)/ 100 * 28))
+        if (price1.length > 3) {
+         price1 = price1[0] + "," + price1[1] + price1[2] + price1[3];
+    }
+    price_cut.innerHTML = `<sup>RRP</sup><span>${price1}</span></div>`
+    div_cut = document.createElement('div')
+    save = document.createElement('p')
+    save.innerHTML = 'Save:28%'
+    save.setAttribute('class', 'save_28')
+    div_cut.append(price_cut, save)
+    div_cut.setAttribute('class','div_cut')
+
+    //..........................................................................................
     let btn_add = document.createElement('button');
     btn_add.setAttribute('id', 'button-container');
     btn_add.textContent = "Add to bag";
     btn_add.addEventListener('click', function () {
         addToBAg(el);
     })
+
+    //...........................................................................................
+    img = document.createElement('img')
+    img.src = "https://www.pngitem.com/pimgs/m/49-498717_computer-icons-tag-youtube-download-sales-price-tag.png"
+    img.setAttribute('class', 'images_p_tag')
+    div_ptag = document.createElement('div')
+    extra_dis = document.createElement('p')
+    extra_dis.innerHTML = 'Extra 8% off'
+    div_ptag.append(img, extra_dis)
+    div_ptag.setAttribute('class','p_tag')
+    
+
+    
+
+                            
     
    
-    upContainer.append(brand,name,size,sizeContainer,price);
+    upContainer.append(brand,name,size,sizeContainer,price,div_cut);
     if (el.discount != 0 && el.discount != "None") {
         let save = document.createElement('p');
         save.setAttribute('id', 'save');
         save.textContent = `Save: ${el.discount}%`;
         upContainer.append(save);
     }
-    upContainer.append(btn_add);
+    upContainer.append(btn_add,div_ptag);
 }
 
 showProduct(product);

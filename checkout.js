@@ -105,8 +105,8 @@ function appendprod(e) {
 
             div_p_detail.innerHTML=`<span class="currsymbol">INR</span>${sum}`
             div_10_discount.innerHTML=`<span class="currsymbol">INR</span>${Math.floor((sum/100)*10)}`
-            div_10 = (sum / 100) * 10;
-            final_overall.innerHTML=`<span class="currsymbol">INR</span>${(sum+773+81.20)-div_10}`
+            div_10 = Math.round((sum / 100) * 10);
+            final_overall.innerHTML=`<span class="currsymbol">INR</span>${Math.round((sum+773+81.20)-div_10)}.00`
             
             final_repo = document.createElement('h3')
         final_repo.innerHTML = `Item Total(${data.length})`
@@ -151,10 +151,10 @@ function appendprod(e) {
             for (i = 0; i < data.length; i++) {
                 sum += Number(data[i].price)
             }
-            if(code_30.value=="masaischool"){
+            if(code_30.value=="piyush30"){
                 alert('Promo Code Applied');
                 var sam = "color:red";
-                sum= (sum + 773 + 81.20)-((sum / 100) * 10)-((sum / 100) * 30);
+                sum= Math.round((sum + 773 + 81.20)-((sum / 100) * 10)-((sum / 100) * 30));
                 key.innerHTML = "Discount Applied";
                 key.setAttribute("style", "sam")
                 var sample = Math.round((sum / 100) * 30);
@@ -164,7 +164,7 @@ function appendprod(e) {
                 alert('Invalid Code !')
                 sum=sum;
             }
-                final_overall.innerHTML=sum;
+                final_overall.innerHTML=`<span class="currsymbol">INR</span>${sum}.00`;
 
 
 

@@ -20,6 +20,11 @@
     /* position:relative; */
     z-index:999;
 }
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 body {
     margin: 0;
     padding: 0;
@@ -601,7 +606,7 @@ hr.pink {
 </style>
 
 <body>
-<div id="sample">
+<div id="sample" class="sticky">
     <div class="head">
             <img src="/Project Strawberry/!!Finalised/header-logo.jfif">
         <input type="search" placeholder="SEARCH BRAND / PRODUCT" />
